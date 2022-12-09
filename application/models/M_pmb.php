@@ -11,7 +11,7 @@ class M_pmb extends CI_Model
         return $this->db->get('prodi')->result_array();
     }
 
-    public function listPrestasi()
+    public function listPendaftarPrestasi()
     {
         return $this->db->get('pendaftar_prestasi')->result_array();
     }
@@ -38,14 +38,13 @@ class M_pmb extends CI_Model
         return $result;
     }
 
-    public function jumlahPendaftarPrestasi($tingkat_prestasi)
+    public function jumlahPendaftarPrestasi()
     {
-        $result = 0;
-        $this->db->where('tingkat_prestasi', $tingkat_prestasi);
-        $data = $this->db->get('pendaftar_prestasi')->result_array();
-        if (!empty($data)) {
-            $result = count($data);
-        }
-        return $result;
+        $this->db->select('tingkat_prestasi','count(tingkat_prestasi');
+        $this->db->from('pendaftar_prestasi');
+        $this->db->group_by('tingkat_prestasi');
+        $this->db->order_by('tingkat_prestasi', 'asc');
+        $query = $this->db-get();
+        return $query->result();
     }
 }

@@ -50,7 +50,7 @@ class Index extends BaseController
 
     public function pendaftarprodi2()
     {
-        $data['title'] = 'Grafik Berdasarkan Tingkat Prestasi';
+        $data['title'] = 'Grafik Berdasarkan Prodi 2';
         $prodi = $this->m_pmb->listProdi();
         foreach ($prodi as $key => $p) {
             $prodi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarProdi1($p['id_prodi']);
@@ -78,10 +78,9 @@ class Index extends BaseController
     public function pendaftarprestasi()
     {
         $data['title'] = 'Grafik Berdasarkan Prestasi';
-        $prestasi = $this->m_pmb->listPrestasi();
+        $prestasi = $this->m_pmb->listPendaftarPrestasi();
         foreach ($prestasi as $key => $p) {
             $prestasi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarPrestasi($p['tingkat_prestasi']);
-            $prestasi[$key]['jumlah3'] = $this->m_pmb->jumlahPendaftarPrestasi($p['tingkat_prestasi']);
             $prestasi[$key]['size'] = rand(10, 30);
         }
 
@@ -90,7 +89,7 @@ class Index extends BaseController
         foreach ($prestasi as $p => $pres) {
             $hasil[$p] = [
                 "name"  => $pres['tingkat_prestasi'],
-                "jumlah" => $pres['jumlah3'],
+                "jumlah" => $pres['jumlah'],
                 "y"     => $pres['size'],
                 // "sliced" => $sliced,
                 // 'selected' => $selected
@@ -100,5 +99,7 @@ class Index extends BaseController
         $data['pendaftar_prestasi'] = $prestasi;
         $data['grafik3'] = json_encode($hasil);
         $this->render('index/grafik_tiga', $data);
+
+        
     }
 }
