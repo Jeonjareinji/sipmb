@@ -50,7 +50,7 @@ class Index extends BaseController
 
     public function pendaftarprodi2()
     {
-        $data['title'] = 'Grafik Berdasarkan Prodi 2';
+        $data['title'] = 'Grafik Berdasarkan Tingkat Prestasi';
         $prodi = $this->m_pmb->listProdi();
         foreach ($prodi as $key => $p) {
             $prodi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarProdi1($p['id_prodi']);
@@ -73,5 +73,32 @@ class Index extends BaseController
         $data['pendaftar'] = $prodi;
         $data['grafik2'] = json_encode($hasil);
         $this->render('index/grafik_dua', $data);
+    }
+
+    public function pendaftarprestasi()
+    {
+        $data['title'] = 'Grafik Berdasarkan Prestasi';
+        $prestasi = $this->m_pmb->listPrestasi();
+        foreach ($prestasi as $key => $p) {
+            $prestasi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarPrestasi($p['tingkat_prestasi']);
+            $prestasi[$key]['jumlah3'] = $this->m_pmb->jumlahPendaftarPrestasi($p['tingkat_prestasi']);
+            $prestasi[$key]['size'] = rand(10, 30);
+        }
+
+        //grafik kedua
+        $hasil = null;
+        foreach ($prestasi as $p => $pres) {
+            $hasil[$p] = [
+                "name"  => $pres['tingkat_prestasi'],
+                "jumlah" => $pres['jumlah3'],
+                "y"     => $pres['size'],
+                // "sliced" => $sliced,
+                // 'selected' => $selected
+            ];
+        }
+
+        $data['pendaftar_prestasi'] = $prestasi;
+        $data['grafik3'] = json_encode($hasil);
+        $this->render('index/grafik_tiga', $data);
     }
 }

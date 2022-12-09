@@ -73,15 +73,6 @@
             SIPMB AMD Academy<br>
             <sub>By: <?= AUTHOR_NAME ?></sub>
         </a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
-        <div class="navbar-nav">
-            <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#">Sign out</a>
-            </div>
-        </div>
     </header>
     <div class="container-fluid">
         <div class="row">
@@ -104,6 +95,12 @@
                             <a class="nav-link" href="<?= site_url('index/pendaftarprodi2') ?>">
                                 <span data-feather="file" class="align-text-bottom"></span>
                                 Pendaftar Berdasarkan Prodi 2
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= site_url('index/pendaftarprestasi') ?>">
+                                <span data-feather="file" class="align-text-bottom"></span>
+                                Pendaftar Berdasarkan Tingkat Prestasi
                             </a>
                         </li>
                     </ul>
