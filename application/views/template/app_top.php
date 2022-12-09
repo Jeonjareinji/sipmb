@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Miftahul Ulum">
-    <title><?= APP_NAME . ' &mdash; By:' . AUTHOR_NAME  ?></title>
+    <meta name="author" content="Luthfi Rachman">
+    <title><?= APP_NAME . ' &mdash; By : ' . AUTHOR_NAME  ?></title>
     <link href="<?= base_url('public') ?>/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url('public') ?>/lib/highchart/code/css/highcharts.css" rel="stylesheet">
 

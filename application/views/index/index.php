@@ -4,7 +4,7 @@
     </div>
     <div class="alert alert-primary">
         <h5>Selamat Datang <?= AUTHOR_NAME ?></h5>
-        <span>Semoga harimu menyenangkan</span>
+        <span>Tugas Akhir</span>
     </div>
     <h2>By: <?= AUTHOR_NAME ?></h2>
 </main>
