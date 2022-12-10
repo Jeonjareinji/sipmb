@@ -98,9 +98,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('index/pendaftarprestasi') ?>">
+                            <a class="nav-link" href="<?= site_url('index/pendaftartingkatprestasi') ?>">
                                 <span data-feather="file" class="align-text-bottom"></span>
                                 Pendaftar Berdasarkan Tingkat Prestasi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= site_url('index/pendaftarjalurmasuk') ?>">
+                                <span data-feather="file" class="align-text-bottom"></span>
+                                Pendaftar Berdasarkan Jalur Masuk
                             </a>
                         </li>
                     </ul>

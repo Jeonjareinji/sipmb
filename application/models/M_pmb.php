@@ -16,10 +16,15 @@ class M_pmb extends CI_Model
         return $this->db->get('pendaftar_prestasi')->result_array();
     }
 
-    public function jumlahPendaftarProdi1($idProdi)
+    public function listJalurMasuk()
+    {
+        return $this->db->get('jalur_masuk')->result_array();
+    }
+
+    public function jumlahPendaftarProdi1($ip1)
     {
         $result = 0;
-        $this->db->where('id_prodi1', $idProdi);
+        $this->db->where('id_prodi1', $ip1);
         $data = $this->db->get('pendaftar')->result_array();
         if (!empty($data)) {
             $result = count($data);
@@ -27,10 +32,10 @@ class M_pmb extends CI_Model
         return $result;
     }
 
-    public function jumlahPendaftarProdi2($idProdi)
+    public function jumlahPendaftarProdi2($ip2)
     {
         $result = 0;
-        $this->db->where('id_prodi2', $idProdi);
+        $this->db->where('id_prodi2', $ip2);
         $data = $this->db->get('pendaftar')->result_array();
         if (!empty($data)) {
             $result = count($data);
@@ -38,13 +43,25 @@ class M_pmb extends CI_Model
         return $result;
     }
 
-    public function jumlahPendaftarPrestasi()
+    public function jumlahPendaftarPrestasi($tp)
     {
-        $this->db->select('tingkat_prestasi','count(tingkat_prestasi');
-        $this->db->from('pendaftar_prestasi');
-        $this->db->group_by('tingkat_prestasi');
-        $this->db->order_by('tingkat_prestasi', 'asc');
-        $query = $this->db-get();
-        return $query->result();
+        $result = 0;
+        $this->db->group_by('tingkat_prestasi', $tp);
+        $data = $this->db->get('pendaftar_prestasi')->result_array();
+        if (!empty($data)) {
+            $result = count($data);
+        }
+        return $result;
+    }
+
+    public function jumlahPendaftarJalurMasuk($idj)
+    {
+        $result = 0;
+        $this->db->where('id_jalur', $idj);
+        $data = $this->db->get('pendaftar')->result_array();
+        if (!empty($data)) {
+            $result = count($data);
+        }
+        return $result;
     }
 }

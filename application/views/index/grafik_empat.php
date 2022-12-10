@@ -1,6 +1,5 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-    <div
-        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2"><?php echo !empty($title) ? $title : null ?></h1>
     </div>
     <div class="row">
@@ -10,22 +9,9 @@
     </div>
 </main>
 <script>
-    getGrafikPie('pendaftar', <?= $grafik3 ?>, 'Grafik Pendaftar Berdasarkan Pilihan Jalur Masuk');
+    getGrafikPie('pendaftar', <?= $grafik4 ?>, 'Grafik Pendaftar Berdasarkan Pilihan Jalur Masuk');
 
     function getGrafikPie(selector, data, title) {
-        var nasional = 300;
-        var internasional = 59;
-        // for (let i = 0; i <= data.length; i++) {
-        //     // console.log(data[i].name);
-        //     if (data[i].name === 'NASIONAL') {
-        //         // totalnasional += data[i].length;
-        //         totalnasional++;
-        //     } else if (data[i].name === 'INTERNASIONAL') {
-        //         // internasional += data[i].length;
-        //         internasional++;
-        //     }
-        // }
-
         Highcharts.chart(selector, {
             chart: {
                 plotBackgroundColor: null,
@@ -37,7 +23,7 @@
                 text: title
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar Prestasi</b>'
+                pointFormat: '{series}: <b>{point.jumlah:.1f} Pendaftar Prestasi</b>'
             },
             accessibility: {
                 point: {
@@ -57,15 +43,7 @@
             series: [{
                 name: 'Pendaftar Prestasi',
                 colorByPoint: true,
-                data: [{
-                    name: 'Nasional',
-                    jumlah: nasional,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }, {
-                    name: 'Internasional',
-                    jumlah: internasional,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }],
+                data: data
             }]
         });
     }
