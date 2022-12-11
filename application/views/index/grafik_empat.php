@@ -23,7 +23,7 @@
                 text: title
             },
             tooltip: {
-                pointFormat: '{series}: <b>{point.jumlah:.1f} Pendaftar </b>'
+                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar </b>'
             },
             accessibility: {
                 point: {
@@ -41,7 +41,7 @@
                 }
             },
             series: [{
-                name: 'Pendaftar',
+                name: 'Pendaftar Pilihan Jalur Masuk',
                 colorByPoint: true,
                 data: data
             }]
