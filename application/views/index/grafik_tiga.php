@@ -15,18 +15,6 @@
     function getGrafikPie(selector, data, title) {
         var nasional = 258;
         var internasional = 63;
-        
-        /*for (let i = 0; i <= data.length; i++) {
-        console.log(data[i].name);
-        if (data[i].name === 'NASIONAL') {
-        totalnasional += data[i].length;
-        totalnasional++;
-        else if (data[i].name === 'INTERNASIONAL') {
-        internasional += data[i].length;
-        internasional++;
-        }
-        }
-        }*/
 
         Highcharts.chart(selector, {
             chart: {
