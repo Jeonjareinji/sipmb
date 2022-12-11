@@ -51,6 +51,7 @@ class M_pmb extends CI_Model
 
     public function jumlahPendaftarPrestasi($tp)
     {
+    
         $result = 0;
         $this->db->group_by('tingkat_prestasi', $tp);
         $data = $this->db->get('pendaftar_prestasi')->result_array();
