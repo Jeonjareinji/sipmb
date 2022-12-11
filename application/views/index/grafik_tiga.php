@@ -10,21 +10,23 @@
     </div>
 </main>
 <script>
-    getGrafikPie('pendaftar', <?= $grafik3 ?>, 'Grafik Pendaftar Berdasarkan Pilihan Jalur Masuk');
+    getGrafikPie('pendaftar', <?= $grafik3 ?>, 'Grafik Pendaftar Berdasarkan Pilihan Prestasi');
 
     function getGrafikPie(selector, data, title) {
         var nasional = 300;
         var internasional = 59;
-        // for (let i = 0; i <= data.length; i++) {
-        //     // console.log(data[i].name);
-        //     if (data[i].name === 'NASIONAL') {
-        //         // totalnasional += data[i].length;
-        //         totalnasional++;
-        //     } else if (data[i].name === 'INTERNASIONAL') {
-        //         // internasional += data[i].length;
-        //         internasional++;
-        //     }
-        // }
+        
+        /*for (let i = 0; i <= data.length; i++) {
+        console.log(data[i].name);
+        if (data[i].name === 'NASIONAL') {
+        totalnasional += data[i].length;
+        totalnasional++;
+        else if (data[i].name === 'INTERNASIONAL') {
+        internasional += data[i].length;
+        internasional++;
+        }
+        }
+        }*/
 
         Highcharts.chart(selector, {
             chart: {
@@ -37,7 +39,7 @@
                 text: title
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar Prestasi</b>'
+                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar </b>'
             },
             accessibility: {
                 point: {

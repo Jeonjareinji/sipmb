@@ -20,15 +20,15 @@ class Index extends BaseController
     {
         $data['title'] = 'Grafik Berdasarkan Prodi 1';
         $prodi = $this->m_pmb->listProdi();
-        foreach ($prodi as $key => $p) {
-            $prodi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarProdi1($p['id_prodi']);
+        foreach ($prodi as $key => $p1) {
+            $prodi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarProdi1($p1['id_prodi']);
             $prodi[$key]['size'] = rand(10, 30);
         }
 
         //grafik pertama
         $result = null;
-        foreach ($prodi as $p => $prod) {
-            $result[$p] = [
+        foreach ($prodi as $p1 => $prod) {
+            $result[$p1] = [
                 "name"  => $prod['nama_prodi'],
                 "jumlah" => $prod['jumlah'],
                 "y"     => $prod['size'],
@@ -46,15 +46,15 @@ class Index extends BaseController
     {
         $data['title'] = 'Grafik Berdasarkan Prodi 2';
         $prodi = $this->m_pmb->listProdi();
-        foreach ($prodi as $key => $p) { 
-            $prodi[$key]['jumlah2'] = $this->m_pmb->jumlahPendaftarProdi2($p['id_prodi']);
+        foreach ($prodi as $key => $p2) { 
+            $prodi[$key]['jumlah2'] = $this->m_pmb->jumlahPendaftarProdi2($p2['id_prodi']);
             $prodi[$key]['size'] = rand(10, 30);
         }
 
         //grafik kedua
         $hasil = null;
-        foreach ($prodi as $p => $prod) {
-            $hasil[$p] = [
+        foreach ($prodi as $p2 => $prod) {
+            $hasil[$p2] = [
                 "name"  => $prod['nama_prodi'],
                 "jumlah" => $prod['jumlah2'],
                 "y"     => $prod['size'],
@@ -98,16 +98,15 @@ class Index extends BaseController
     {
         $data['title'] = 'Grafik Berdasarkan Jalur Masuk';
         $jalurmasuk = $this->m_pmb->listJalurMasuk();
-        foreach ($jalurmasuk as $key => $p) {
-            $jalurmasuk[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarJalurMasuk($p['id_jalur']);
-            $jalurmasuk[$key]['jumlah4'] = $this->m_pmb->jumlahPendaftarJalurMasuk($p['id_jalur']);
+        foreach ($jalurmasuk as $key => $pjm) {
+            $jalurmasuk[$key]['jumlah4'] = $this->m_pmb->jumlahPendaftarJalurMasuk($pjm['id_jalur']);
             $jalurmasuk[$key]['size'] = rand(10, 30);
         }
 
         //grafik kedua
         $hasil = null;
-        foreach ($jalurmasuk as $p => $jalurmas) {
-            $hasil[$p] = [
+        foreach ($jalurmasuk as $pjm => $jalurmas) {
+            $hasil[$pjm] = [
                 "name"  => $jalurmas['nama_jalur'],
                 "jumlah" => $jalurmas['jumlah4'],
                 "y"     => $jalurmas['size'],

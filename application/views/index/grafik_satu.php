@@ -41,7 +41,7 @@
                 }
             },
             series: [{
-                name: 'Pendaftar',
+                name: 'Pendaftar Prodi 1',
                 colorByPoint: true,
                 data: data
             }]
