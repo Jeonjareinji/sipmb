@@ -109,6 +109,12 @@
                                 Pendaftar Berdasarkan Jalur Masuk
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= site_url('index/pendapatanbank') ?>">
+                                <span data-feather="file" class="align-text-bottom"></span>
+                                Pendapatan dari Masing-masing Bank
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </nav>
