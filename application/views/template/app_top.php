@@ -116,7 +116,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= site_url('index/') ?>">
+                            <a class="nav-link" href="<?= site_url('index/jumlahstatusbayarbank') ?>">
                                 <span data-feather="file" class="align-text-bottom"></span>
                                 Perbandingan Total Pendaftar antara yang Sudah bayar dan Belum bayar
                             </a>

@@ -145,4 +145,30 @@ class Index extends BaseController
         $data['grafik5'] = json_encode($hasil);
         $this->render('index/grafik_lima', $data);
     }
+
+    public function jumlahstatusbayarbank()
+    {
+        $data['title'] = 'Grafik Status Pembayaran Pendaftar (Belum dan Sudah) Berdasarkan Masing-masing Bank';
+        $jmlspp = $this->m_pmb->listBank();
+        foreach ($jmlspp as $key => $jlspp) {
+            $jmlspp[$key]['jumlah6'] = $this->m_pmb->jumlahSpPendaftar($jlspp['id_bank']);
+            $jmlspp[$key]['size'] = rand(10, 30);
+        }
+
+        //grafik kedua
+        $hasil = null;
+        foreach ($jmlspp as $jlspp => $spp) {
+            $hasil[$jlspp] = [
+                "name"  => $spp['nama_bank'],
+                "jumlah" => $spp['jumlah6'],
+                "y"     => $spp['size'],
+                // "sliced" => $sliced,
+                // 'selected' => $selected
+            ];
+        }
+
+        $data['pendaftar'] = $jmlspp;
+        $data['grafik6'] = json_encode($hasil);
+        $this->render('index/grafik_enam', $data);
+    }
 }
