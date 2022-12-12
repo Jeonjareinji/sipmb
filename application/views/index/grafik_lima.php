@@ -9,63 +9,27 @@
     </div>
 </main>
 <script>
-    getGrafikPie('pendaftar', <?= $grafik5 ?>, 'Grafik Pendaftar Berdasarkan Pendapatan Masing-masing Bank');
+    getGrafikColumn('pendaftar', <?= $grafik5 ?>, 'Grafik Pendapatan dari Masing-masing Bank');
 
-    function getGrafikPie(selector, data, title) {
-        var bca     = 24450000;
-        var mandiri = 25500000;
-        var bni     = 27150000;
-        var bri     = 25950000;
-
+    function getGrafikColumn(selector, data, title) {
+       
         Highcharts.chart(selector, {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: title
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Hasil Pendapatan </b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Pendapatan',
-                colorByPoint: true,
-                data: [{
-                    name: 'BCA',
-                    jumlah: bca,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }, {
-                    name: 'Mandiri',
-                    jumlah: mandiri,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }, { 
-                    name: 'BNI',
-                    jumlah: bni,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }, {
-                    name: 'BRI',
-                    jumlah: bri,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }],
-            }]
-        });
-    }
+        chart: {
+        type: 'column'
+        },
+        title: {
+            text: title
+        },
+        xAxis: {
+            categories: ['BCA', 'Mandiri', 'BRI', 'BNI']
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'Total Pendapatan',
+            data: [24450000, 25500000, 27150000, 25950000]
+        }]
+    });
+  }
 </script>

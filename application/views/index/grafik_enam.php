@@ -9,9 +9,9 @@
     </div>
 </main>
 <script>
-    getGrafikPie('pendaftar', <?= $grafik6 ?>, 'Grafik Jumlah Total yang Sudah bayar dan yang Belum berdasarkan Masing-masing Bank');
+    getGrafikColumn('pendaftar', <?= $grafik6 ?>, 'Grafik Jumlah Total yang Sudah bayar dan yang Belum berdasarkan Masing-masing Bank');
 
-    function getGrafikPie(selector, data, title) {
+    function getGrafikColumn(selector, data, title) {
 
             Highcharts.chart(selector, {
         chart: {
