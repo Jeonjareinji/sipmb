@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE PROCEDURE dummy() 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `dummy`()
 BEGIN
 
     DECLARE i,n INT;
@@ -17,8 +17,8 @@ BEGIN
     DECLARE idp1 int(11);
     DECLARE idp2 int(11);
     DECLARE nominal_bayar varchar(15);
-    DECLARE id_bank int(11);
-    DECLARE isb int(11);
+    DECLARE bank_id int(11);
+    DECLARE isb varchar(10);
     
     DECLARE pendaftar_id INT;
     DECLARE tingkat_prestasi VARCHAR(30);
@@ -43,28 +43,28 @@ while i < n DO
     SET agama = 'Islam';
     SET idp1 = (SELECT id_prodi FROM prodi ORDER BY RAND() LIMIT 1);
     SET idp2 = (SELECT id_prodi FROM prodi ORDER BY RAND() LIMIT 1);
-    SET nominal_bayar = 1500000;
-    SET id_bank = (SELECT id_bank FROM bank ORDER BY RAND() LIMIT 1);
-    SET isb = 1;
+    SET nominal_bayar = 150000;
+    SET bank_id = (SELECT id_bank FROM bank ORDER BY RAND() LIMIT 1);
+    SET isb = 'Sudah';
     
-    IF jalur_id = 1 THEN
-    SET nominal_bayar = null;
+    
+    IF jalur_id = 3 THEN
         SET nominal_bayar = null;
-        SET isb = 1;
+        SET bank_id = null;
+        SET isb = 'Gratis';
+        END IF;
+
+     IF(i+1) % 7 = 0 THEN
+    	SET isb = 'Belum';
     END IF;
 
-	IF (i+1) % 5 = 0 THEN
-    SET jenis_kelamin = 'Perempuan';
+    IF (i+1) % 5 = 0 THEN
+        SET jenis_kelamin = 'Perempuan';
         SET tempat_lahir = 'Bekasi';
-    END IF;
-    
-    IF (i+1) % 3 = 0 THEN
-    SET isb = 0;
-    END IF;
+        END IF;
 
- 
-    INSERT INTO pendaftar (id_jalur, no_pendaftar, nama, nisn, nik, tempat_lahir, tanggal_lahir, jenis_kelamin, no_hp, alamat, agama, id_prodi1, id_prodi2, nominal_bayar, id_bank, is_bayar)
-    VALUES (jalur_id, no_pendaftar, nama, nisn, nik, tempat_lahir, tanggal_lahir, jenis_kelamin, no_hp, alamat, agama, idp1, idp2, nominal_bayar, id_bank, isb);
+    INSERT INTO pendaftar (id_jalur, no_pendaftar, nama, nisn, nik, tempat_lahir, tanggal_lahir, jenis_kelamin, no_hp, alamat, agama, id_prodi1, id_prodi2, nominal_bayar, id_bank, status_bayar)
+    VALUES (jalur_id, no_pendaftar, nama, nisn, nik, tempat_lahir, tanggal_lahir, jenis_kelamin, no_hp, alamat, agama, idp1, idp2, nominal_bayar, bank_id, isb);
 
         SET pendaftar_id = (SELECT LAST_INSERT_ID());
 
@@ -85,8 +85,5 @@ while i < n DO
         END IF;
         SET i = i + 1;
 END WHILE;
-END
-$$
-
-
-CALL dummy();
+END$$
+DELIMITER ;
