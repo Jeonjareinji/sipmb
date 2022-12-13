@@ -26,6 +26,9 @@
             title: {
                 text: title
             },
+            subtitle: {
+                text: 'Jumlah Pendaftar : 344'
+            },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar </b>'
             },

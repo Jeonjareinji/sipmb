@@ -13,6 +13,43 @@
 
     function getGrafikPie(selector, data, title) {
         Highcharts.chart(selector, {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: title
+    },
+    subtitle: {
+        text: 'Jumlah Pendaftar : 1000'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar </b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.jumlah:.1f}'
+            }
+        }
+    },
+    series: [{
+                name: 'Pendaftar Pilihan Jalur Masuk',
+                colorByPoint: true,
+                data: data
+            }]
+        });
+        /*Highcharts.chart(selector, {
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -45,6 +82,6 @@
                 colorByPoint: true,
                 data: data
             }]
-        });
+        });*/
     }
 </script>

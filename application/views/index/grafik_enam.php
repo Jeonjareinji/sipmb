@@ -20,9 +20,16 @@
         title: {
             text: title
         },
+        subtitle: {
+        text: 'Total Pendaftar : 656'
+        },
         xAxis: {
             categories: ['BCA', 'Mandiri', 'BRI', 'BNI']
         },
+        yAxis: {
+        title: {
+            text: 'Pendaftar'
+        }},
         credits: {
             enabled: false
         },

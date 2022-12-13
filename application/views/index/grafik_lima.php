@@ -20,14 +20,21 @@
         title: {
             text: title
         },
+        subtitle: {
+        text: 'Total Pendapatan : Rp. 98.400.000'
+        },
         xAxis: {
             categories: ['BCA', 'Mandiri', 'BRI', 'BNI']
         },
+        yAxis: {
+        title: {
+            text: 'Total Pendapatan'
+        }},
         credits: {
             enabled: false
         },
         series: [{
-            name: 'Total Pendapatan',
+            name: 'Pendapatan',
             data: [26400000, 24300000, 26250000, 21450000]
         }]
     });

@@ -54,7 +54,7 @@ while i < n DO
         SET isb = 'Gratis';
         END IF;
 
-     IF(i+1) % 7 = 0 THEN
+     IF(i+1) % 8 = 0 THEN
     	SET isb = 'Belum';
     END IF;
 
