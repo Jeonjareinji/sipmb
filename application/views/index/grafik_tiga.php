@@ -13,8 +13,8 @@
     getGrafikPie('pendaftar', <?= $grafik3 ?>, 'Grafik Pendaftar Berdasarkan Pilihan Prestasi');
 
     function getGrafikPie(selector, data, title) {
-        var nasional = 265;
-        var internasional = 48;
+        var nasional = 292;
+        var internasional = 52;
 
         Highcharts.chart(selector, {
             chart: {
