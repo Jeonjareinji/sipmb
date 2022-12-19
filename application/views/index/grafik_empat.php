@@ -12,8 +12,8 @@
     getGrafikPie('pendaftar', <?= $grafik4 ?>, 'Grafik Pendaftar Berdasarkan Pilihan Jalur Masuk');
 
     function getGrafikPie(selector, data, title) {
-        Highcharts.chart(selector, {
-    chart: {
+      Highcharts.chart(selector, {
+        chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
         plotShadow: false,
@@ -49,39 +49,5 @@
                 data: data
             }]
         });
-        /*Highcharts.chart(selector, {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: title
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar </b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Pendaftar Pilihan Jalur Masuk',
-                colorByPoint: true,
-                data: data
-            }]
-        });*/
     }
 </script>

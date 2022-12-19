@@ -13,53 +13,42 @@
     getGrafikPie('pendaftar', <?= $grafik3 ?>, 'Grafik Pendaftar Berdasarkan Pilihan Prestasi');
 
     function getGrafikPie(selector, data, title) {
-        var nasional = 292;
-        var internasional = 52;
-
-        Highcharts.chart(selector, {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: title
-            },
-            subtitle: {
+    Highcharts.chart(selector, {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: title
+        },
+        subtitle: {
                 text: 'Jumlah Pendaftar : 344'
             },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar </b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Pendaftar Prestasi',
-                colorByPoint: true,
-                data: [{
-                    name: 'Nasional',
-                    jumlah: nasional,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }, {
-                    name: 'Internasional',
-                    jumlah: internasional,
-                    y: Math.floor(Math.random() * 30) + 1,
-                }],
-            }]
-        });
-    }
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.jumlah:.1f} Pendaftar</b>'
+        },
+        accessibility: {
+            point: {
+                valueSuffix: '%'
+            }
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Pendaftar Prestasi',
+            colorByPoint: true,
+            data: data
+        }]
+    });
+}
 </script>

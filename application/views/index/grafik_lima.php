@@ -12,19 +12,21 @@
     getGrafikColumn('pendaftar', <?= $grafik5 ?>, 'Grafik Pendapatan dari Masing-masing Bank');
 
     function getGrafikColumn(selector, data, title) {
-       
         Highcharts.chart(selector, {
         chart: {
-        type: 'column'
+            type: 'column'
         },
         title: {
             text: title
         },
         subtitle: {
-        text: 'Total Pendapatan : Rp. 98.400.000'
+                text: 'Total Pendapatan : Rp. 98.400.000'
+            },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.jumlah:.1f}</b>'
         },
         xAxis: {
-            categories: ['BCA', 'Mandiri', 'BRI', 'BNI']
+            categories: ['BCA', 'BNI', 'BRI', 'Mandiri']
         },
         yAxis: {
         title: {
@@ -35,8 +37,9 @@
         },
         series: [{
             name: 'Pendapatan',
-            data: [26400000, 24300000, 26250000, 21450000]
+            colorByPoint: true,
+            data: data
         }]
     });
-  }
+}
 </script>

@@ -49,38 +49,29 @@ class M_pmb extends CI_Model
         return $result;
     }
 
-    public function jumlahPendaftarPrestasi($tp)
+    public function jumlahPendaftarPrestasi()
     {
-    
-        $result = 0;
-        $this->db->group_by('tingkat_prestasi', $tp);
-        $data = $this->db->get('pendaftar_prestasi')->result_array();
-        if (!empty($data)) {
-            $result = count($data);
-        }
+
+        return $this->db->query('SELECT count(id_pendaftar) as jumlah_pendaftar, tingkat_prestasi
+        FROM pendaftar_prestasi GROUP BY tingkat_prestasi')->result_array();
+
+    }
+
+    public function jumlahPendaftarJalurMasuk()
+    {
+        $this->db->select(['count(id_pendaftar) as jumlah4', 'pendaftar.id_jalur', 'j.nama_jalur']);
+        $this->db->join('jalur_masuk as j', 'pendaftar.id_jalur = j.id_jalur');
+        $this->db->group_by('pendaftar.id_jalur');
+        $result = $this->db->get('pendaftar')->result_array();
         return $result;
     }
 
-    public function jumlahPendaftarJalurMasuk($idj)
+    public function jumlahPendapatanBank()
     {
-        $result = 0;
-        $this->db->where('id_jalur', $idj);
-        $data = $this->db->get('pendaftar')->result_array();
-        if (!empty($data)) {
-            $result = count($data);
-        }
-        return $result;
-    }
 
-    public function jumlahPendapatanBank($idj)
-    {
-        $result = 0;
-        $this->db->where('id_bank', $idj);
-        $data = $this->db->get('bank')->result_array();
-        if (!empty($data)) {
-            $result = count($data);
-        }
-        return $result;
+        return $this->db->query('SELECT sum(nominal_bayar) as jumlah5, nama_bank
+        FROM bank as a, pendaftar as b WHERE a.id_bank=b.id_bank GROUP BY nama_bank')->result_array();
+         
     }
 
     public function jumlahSpPendaftar($sp)

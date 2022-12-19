@@ -25,15 +25,12 @@ class Index extends BaseController
             $prodi[$key]['size'] = rand(10, 30);
         }
 
-        //grafik pertama
         $result = null;
         foreach ($prodi as $p1 => $prod) {
             $result[$p1] = [
                 "name"  => $prod['nama_prodi'],
                 "jumlah" => $prod['jumlah'],
                 "y"     => $prod['size'],
-                // "sliced" => $sliced,
-                // 'selected' => $selected
             ];
         }
 
@@ -51,15 +48,12 @@ class Index extends BaseController
             $prodi[$key]['size'] = rand(10, 30);
         }
 
-        //grafik kedua
         $hasil = null;
         foreach ($prodi as $p2 => $prod) {
             $hasil[$p2] = [
                 "name"  => $prod['nama_prodi'],
                 "jumlah" => $prod['jumlah2'],
                 "y"     => $prod['size'],
-                // "sliced" => $sliced,
-                // 'selected' => $selected
             ];
         }
 
@@ -71,25 +65,20 @@ class Index extends BaseController
     public function pendaftartingkatprestasi()
     {
         $data['title'] = 'Grafik Berdasarkan Prestasi';
-        $prestasi = $this->m_pmb->listPendaftarPrestasi();
-        foreach ($prestasi as $key => $ps) {
-            $prestasi[$key]['jumlah3'] = $this->m_pmb->jumlahPendaftarPrestasi($ps['tingkat_prestasi']);
-            $prestasi[$key]['size'] = rand(10, 30);
-        }
-
-        //grafik kedua
+        $prestasi = $this->m_pmb->jumlahPendaftarPrestasi();
+        
         $hasil = null;
+        $sumtotal = 0;
         foreach ($prestasi as $ps => $pres) {
+            $sumtotal += $pres['jumlah_pendaftar'];
             $hasil[$ps] = [
-                "name"  => $pres['tingkat_prestasi'],
-                "jumlah" => $pres['jumlah3'],
-                "y"     => $pres['size'],
-                // "sliced" => $sliced,
-                // 'selected' => $selected
+                "name" => $pres['tingkat_prestasi'],
+                "jumlah" => intval($pres['jumlah_pendaftar']),
+                "y" => intval($pres['jumlah_pendaftar']),
             ];
         }
 
-        $data['pendaftar_prestasi'] = $prestasi;
+        $data['subtitle'] = 'Jumlah Pendaftar:' . $sumtotal;
         $data['grafik3'] = json_encode($hasil);
         $this->render('index/grafik_tiga', $data);
     }
@@ -97,25 +86,20 @@ class Index extends BaseController
     public function pendaftarjalurmasuk()
     {
         $data['title'] = 'Grafik Berdasarkan Jalur Masuk';
-        $jalurmasuk = $this->m_pmb->listJalurMasuk();
-        foreach ($jalurmasuk as $key => $pjm) {
-            $jalurmasuk[$key]['jumlah4'] = $this->m_pmb->jumlahPendaftarJalurMasuk($pjm['id_jalur']);
-            $jalurmasuk[$key]['size'] = rand(10, 30);
-        }
+        $jalurmasuk = $this->m_pmb->jumlahPendaftarJalurMasuk();
 
-        //grafik kedua
         $hasil = null;
+        $sumtotal = 0;
         foreach ($jalurmasuk as $pjm => $jalurmas) {
+            $sumtotal += $jalurmas['jumlah4'];
             $hasil[$pjm] = [
-                "name"  => $jalurmas['nama_jalur'],
-                "jumlah" => $jalurmas['jumlah4'],
-                "y"     => $jalurmas['size'],
-                // "sliced" => $sliced,
-                // 'selected' => $selected
+                'name' => $jalurmas['nama_jalur'],
+                'jumlah' => intval($jalurmas['jumlah4']),
+                'y' => intval($jalurmas['jumlah4']),
             ];
         }
 
-        $data['pendaftar'] = $jalurmasuk;
+        $data['subtitle'] = 'Jalur Masuk:' . $sumtotal;
         $data['grafik4'] = json_encode($hasil);
         $this->render('index/grafik_empat', $data);
     }
@@ -123,25 +107,20 @@ class Index extends BaseController
     public function pendapatanbank()
     {
         $data['title'] = 'Grafik Pendapatan dari Masing-masing Bank';
-        $pndtbank = $this->m_pmb->listBank();
-        foreach ($pndtbank as $key => $bnk) {
-            $pndtbank[$key]['jumlah5'] = $this->m_pmb->jumlahPendapatanBank($bnk['id_bank']);
-            $pndtbank[$key]['size'] = rand(10, 30);
-        }
-
-        //grafik kedua
+        $pndtbank = $this->m_pmb->jumlahPendapatanBank();
+        
         $hasil = null;
+        $sumtotal = 0;
         foreach ($pndtbank as $bnk => $bnka) {
+            $sumtotal += $bnka['jumlah5'];
             $hasil[$bnk] = [
-                "name"  => $bnka['nama_bank'],
-                "jumlah" => $bnka['jumlah5'],
-                "y"     => $bnka['size'],
-                // "sliced" => $sliced,
-                // 'selected' => $selected
+                "name" => $bnka['nama_bank'],
+                "jumlah" => intval($bnka['jumlah5']),
+                "y" => intval($bnka['jumlah5']),
             ];
         }
 
-        $data['pendaftar'] = $pndtbank;
+        $data['subtitle'] = 'Jumlah Pendapatan:' . $sumtotal;
         $data['grafik5'] = json_encode($hasil);
         $this->render('index/grafik_lima', $data);
     }
@@ -162,8 +141,6 @@ class Index extends BaseController
                 "name"  => $spp['nama_bank'],
                 "jumlah" => $spp['jumlah6'],
                 "y"     => $spp['size'],
-                // "sliced" => $sliced,
-                // 'selected' => $selected
             ];
         }
 
