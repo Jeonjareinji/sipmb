@@ -27,26 +27,18 @@ class M_pmb extends CI_Model
     }
 
 
-    public function jumlahPendaftarProdi1($ip1)
+    public function jumlahPendaftarProdi1()
     {
-        $result = 0;
-        $this->db->where('id_prodi1', $ip1);
-        $data = $this->db->get('pendaftar')->result_array();
-        if (!empty($data)) {
-            $result = count($data);
-        }
-        return $result;
+
+        return $this->db->query('SELECT count(id_prodi1) AS prodi1, nama_prodi FROM prodi AS p, pendaftar pf WHERE
+        p.id_prodi=pf.id_prodi1 GROUP BY nama_prodi')->result_array();
+
     }
 
-    public function jumlahPendaftarProdi2($ip2)
+    public function jumlahPendaftarProdi2()
     {
-        $result = 0;
-        $this->db->where('id_prodi2', $ip2);
-        $data = $this->db->get('pendaftar')->result_array();
-        if (!empty($data)) {
-            $result = count($data);
-        }
-        return $result;
+        return $this->db->query('SELECT count(id_prodi2) AS prodi2, nama_prodi FROM prodi AS p, pendaftar pf WHERE
+        p.id_prodi=pf.id_prodi2 GROUP BY nama_prodi')->result_array();
     }
 
     public function jumlahPendaftarPrestasi()

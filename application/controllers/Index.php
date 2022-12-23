@@ -19,46 +19,44 @@ class Index extends BaseController
     public function pendaftarprodi1()
     {
         $data['title'] = 'Grafik Berdasarkan Prodi 1';
-        $prodi = $this->m_pmb->listProdi();
-        foreach ($prodi as $key => $p1) {
-            $prodi[$key]['jumlah'] = $this->m_pmb->jumlahPendaftarProdi1($p1['id_prodi']);
-            $prodi[$key]['size'] = rand(10, 30);
-        }
-
-        $result = null;
-        foreach ($prodi as $p1 => $prod) {
-            $result[$p1] = [
-                "name"  => $prod['nama_prodi'],
-                "jumlah" => $prod['jumlah'],
-                "y"     => $prod['size'],
+        $pendaftar = $this->m_pmb->jumlahPendaftarProdi1();
+      
+        $grafik = null;
+        $sumtotal = 0;
+        foreach ($pendaftar as $key => $value) {
+            $sumtotal += $value['prodi1'];
+            $grafik[$key] = [
+                'name' => $value['nama_prodi'],
+                'jumlah' => intval($value['prodi1']),
+                'y' => intval($value['prodi1']),
             ];
+
         }
 
-        $data['pendaftar'] = $prodi;
-        $data['grafik1'] = json_encode($result);
+        $data['subtitle'] = 'Jumlah Pendaftar:' . $sumtotal;
+        $data['grafik1'] = json_encode($grafik);
         $this->render('index/grafik_satu', $data);
     }
 
     public function pendaftarprodi2()
     {
         $data['title'] = 'Grafik Berdasarkan Prodi 2';
-        $prodi = $this->m_pmb->listProdi();
-        foreach ($prodi as $key => $p2) { 
-            $prodi[$key]['jumlah2'] = $this->m_pmb->jumlahPendaftarProdi2($p2['id_prodi']);
-            $prodi[$key]['size'] = rand(10, 30);
-        }
-
-        $hasil = null;
-        foreach ($prodi as $p2 => $prod) {
-            $hasil[$p2] = [
-                "name"  => $prod['nama_prodi'],
-                "jumlah" => $prod['jumlah2'],
-                "y"     => $prod['size'],
+        $pendaftar = $this->m_pmb->jumlahPendaftarProdi2();
+      
+        $grafik = null;
+        $sumtotal = 0;
+        foreach ($pendaftar as $key => $value) {
+            $sumtotal += $value['prodi2'];
+            $grafik[$key] = [
+                'name' => $value['nama_prodi'],
+                'jumlah' => intval($value['prodi2']),
+                'y' => intval($value['prodi2']),
             ];
+
         }
 
-        $data['pendaftar'] = $prodi;
-        $data['grafik2'] = json_encode($hasil);
+        $data['subtitle'] = 'Jumlah Pendaftar:' . $sumtotal;
+        $data['grafik2'] = json_encode($grafik);
         $this->render('index/grafik_dua', $data);
     }
 
